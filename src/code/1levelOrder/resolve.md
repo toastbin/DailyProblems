@@ -14,5 +14,5 @@
   5. 因为每次遍历的上一层节点, 找的是下一层节点, 所以最后一层遍历出的`curLevel`永远是空数组, 要将最后的`res.pop()`一下.
 
 + 简单图示
-  + ![image]()
+  + ![image](https://github.com/toastbin/DailyProblems/blob/master/src/code/1levelOrder/diagram.jpg)
   
