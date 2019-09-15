@@ -5,10 +5,13 @@
 
 例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]
 
-
-
- 
-
+                             3
+                          /     \
+                         5       1
+                        /  \    /  \
+                       6    2   0   8
+                           /  \
+                          7    4
 示例 1:
 
 输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
@@ -51,13 +54,13 @@ var lowestCommonAncestor = function(root, p, q) {
     if (curNode === null) return false
     let left = traverse(curNode.left, p ,q) ? 1 : 0
     let right = traverse(curNode.right, p, q) ? 1 : 0
-    let mid = (curNode === p || curNode === q) ? 1 : 0
+    let flag = (curNode === p || curNode === q) ? 1 : 0
 
-    if (mid + left + right >= 2) {
+    if (flag + left + right >= 2) {
       ans = curNode
     }
 
-    return (mid + left + right > 0)
+    return (flag + left + right > 0)
   }
   traverse(root, q, p)
   return ans
