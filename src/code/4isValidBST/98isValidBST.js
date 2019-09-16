@@ -63,9 +63,10 @@ var isValidBST = function(root) {
       /  \
      6   20
 
+  上述代码这个测试用例未通过, 因为根节点的整个右子树都要大于本身, 显然 6 没有大于 10
+
 */ 
 
-// 错误
 
 
 var isValidBST = function(root) {
