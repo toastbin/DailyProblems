@@ -16,18 +16,32 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
-  const res = []
-  const m = new Map()
+
+// 多次使用 indexOf 并且拼接数组 复杂度过高 不予通过
+var twoSum1 = function(nums, target) {
+  let res = []
   for(let i=0; i<nums.length; i++){
-    if(m.has(target - nums[i])){
+    let curNums = [...nums.slice(0, i+1).fill('*'),...nums.slice(i+1)] 
+    let indexOf = curNums.indexOf(target-nums[i])
+    if(indexOf > -1 ){
       res.push(i)
-      res.push(m.get(target - nums[i]))
-    }else{
-      m.set(nums[i], i)
+      res.push(indexOf)
+      break
     }
   }
   return res
 };
 
 console.log(twoSum([3, 2, 4], 6))
+
+var twoSum2 = function(nums, target) {
+  const m = new Map()
+  for(let i=0; i<nums.length; i++){
+    let diff = target - nums[i]
+    if(m.has(diff)){
+      return [m.get(diff), i]
+    }else{
+      m.set(nums[i], i)
+    }
+  }
+};
