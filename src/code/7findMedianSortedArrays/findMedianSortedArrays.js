@@ -44,60 +44,23 @@ var findMedianSortedArrays1 = function(nums1, nums2) {
 
 //
 var findMedianSortedArrays2 = function(nums1, nums2) {
-  let len1 = nums1.length;
-  let len2 = nums2.length;
-  
-  let n = (len1 + len2) / 2;
-  let m = Math.floor(n);
-  if (m === n) {
-      n = m - 1;
-  } else {
-      n = m;
+  let len = Math.floor((nums1.length + nums2.length) / 2)
+
+  while(1) {
+
+    if( len === 0 ){
+      return nums1[0] > nums2[0] ? nums2[0] : nums1[0]
+    }
+
+    if(nums1[len-1] > nums2[len-1]){
+      nums2.splice(0, len)
+    }else{
+      nums1.splice(0, len)
+    }
+    console.log(nums1, nums2);
+    len = Math.floor(len/2)
   }
-  
-  let i = 0, j = 0, k = -1;
-  let mNum = null, nNum = null;
-  while (i < len1 && j < len2 && (mNum === null || nNum === null)) {
-      k++;
-      let num;
-      if (nums1[i] < nums2[j]) {
-          num = nums1[i];
-          i++;
-      } else {
-          num = nums2[j];
-          j++;
-      }
-      if (k === m) {
-          mNum = num;
-      }
-      if (k === n) {
-         nNum = num; 
-      }
-  }
-  
-  while (i < len1 && (mNum === null || nNum === null)) {
-      k++;
-      let num = nums1[i];
-      i++;
-      if (k === m) {
-          mNum = num;
-      }
-      if (k === n) {
-         nNum = num; 
-      }
-  }
-  while (j < len2 && (mNum === null || nNum === null)) {
-      k++;
-      let num = nums2[j];
-      j++;
-      if (k === m) {
-          mNum = num;
-      }
-      if (k === n) {
-         nNum = num; 
-      }
-  }
-  return (nNum + mNum) / 2;
+
 };
 
-console.log( findMedianSortedArrays2([3], [-2, -1]) )
+console.log( findMedianSortedArrays2([3,4, 5], [-2, -1]) )
