@@ -24,6 +24,8 @@
  */
 var reverse1 = function(x) {
   let res
+  const MAX31 = Math.pow(2, 31) - 1
+  const MIN31 = Math.pow(-2, 31)
   if(x > 0) {
     res = parseInt((x+'').split('').reverse().join(''))
   } else {
@@ -31,10 +33,10 @@ var reverse1 = function(x) {
     arr.push(arr.shift())
     res = parseInt(  arr.reverse().join('') )
   }
-  if(res < Math.pow(2,31) - 1 && res > Math.pow(-2,31)) {
-    return res;
+  if(cur < MIN31 || cur > MAX31 ){
+    return 0
   }
-  return 0;
+  return res;
 };
 
 
