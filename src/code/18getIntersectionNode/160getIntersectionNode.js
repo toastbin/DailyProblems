@@ -16,7 +16,8 @@
  * @param {ListNode} headB
  * @return {ListNode}
  */
-var getIntersectionNode = function(headA, headB) {
+// 用了一个 辅助的 hashMap 结构  额外空间复杂度是 O(N)
+var getIntersectionNode1 = function(headA, headB) {
   if(!headA || !headB) {
     return null
   }
@@ -37,4 +38,40 @@ var getIntersectionNode = function(headA, headB) {
   }
 
   return null
+};
+
+
+// 不适用 额外的辅助结构, 空间复杂度为 O(N)
+var getIntersectionNode2 = function(headA, headB) {
+  if(!headA || !headB) {
+    return null
+  }
+  let endA = headA
+  let countA = 0
+  let endB = headB
+  let countB = 0
+  while(endA.next) {
+    endA = endA.next
+    countA ++
+  }
+  while(endB.next) {
+    endB = endB.next
+    countB ++
+  }
+
+  if(endA === endB) {
+    const times = Math.abs(++countA - ++countB)
+    let cur = countA > countB ? headA : headB
+    let anotherCur = cur === headA ? headB : headA
+    for(let i=0; i<times; i++) {
+      cur = cur.next
+    }
+    while(cur !== anotherCur) {
+      cur = cur.next
+      anotherCur = anotherCur.next
+    }
+    return cur
+  } else {
+    return null
+  }
 };
