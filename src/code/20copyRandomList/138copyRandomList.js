@@ -10,7 +10,18 @@
 
 
 输入：
-{"$id":"1","next":{"$id":"2","next":null,"random":{"$ref":"2"},"val":2},"random":{"$ref":"2"},"val":1}
+[
+  {
+    val: '1',
+    next: 2,
+    random: 2
+  },
+  {
+    val: 2,
+    next: null,
+    random: 2
+  }
+]
 
 解释：
 节点 1 的值是 1，它的下一个指针和随机指针都指向节点 2 。
