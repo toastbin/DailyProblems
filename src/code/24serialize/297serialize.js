@@ -63,6 +63,7 @@ var deserialize = function(data) {
     if(value === '#') {
       return null
     }
+    
     const head = new TreeNode(value)
     head.left = deProcess(queue)
     head.right = deProcess(queue)
