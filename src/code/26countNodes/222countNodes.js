@@ -57,7 +57,7 @@ var countNodes3 = function(root) {
 
   function bs(node, level, h) {
     if(level === h) return 1
-    if(mostLevel(node.right, level + 1) === h) {
+    if(mostLevel(node.right, level) + 1 === h) {
       // 2 ^ h - level
       return (1 << (h - level)) + bs(node.right, level + 1, h)
     } else {
