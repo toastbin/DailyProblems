@@ -135,7 +135,7 @@ var findMaximizedCapital = function (k, W, Profits, Capital) {
     minCostPQueue.add(i);
   }
   for (let i = 0; i < k; i++) {
-    while (minCostPQueue.size !== 0 && Capital[minCostPQueue.peek()] <= W) {
+    while (minCostPQueue.size !== 0 && Capital[minCostPQueue .peek()] <= W) {
       maxProfitPQueue.add(minCostPQueue.pull());
     }
     if (maxProfitPQueue.size === 0) return W;
