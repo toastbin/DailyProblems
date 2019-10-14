@@ -19,7 +19,8 @@
  * @param {number} amount
  * @return {number}
  */
-var coinChange = function(coins, amount) {
+// 暴力递归 不予通过 
+var coinChange1 = function(coins, amount) {
   
   return process(coins, amount)
 
@@ -38,4 +39,26 @@ var coinChange = function(coins, amount) {
   }
 };
 
-console.log(coinChange([1, 2, 5], 11));
+console.log(coinChange1([1, 2, 5], 11));
+
+// dp 完全背包问题
+var coinChange2 = function(coins, amount) {
+  
+  const dp = new Array(amount+1).fill(-1)
+  dp[0] = 0
+
+  for(let i=0, len=coins.length; i<len; i++) {
+    for(let j=coins[i]; j<=amount; j++) {
+      if(dp[j - coins[i]] === -1) continue
+      if(dp[j] === -1) {
+        dp[j] = dp[j-coins[i]] + 1
+        continue
+      }
+      dp[j] = Math.min(dp[j], dp[j-coins[i]] + 1)
+    }
+  }
+  return dp[amount]
+  
+};
+
+console.log(coinChange2([1, 2, 5], 11));
