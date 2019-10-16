@@ -113,3 +113,24 @@ function knapsack4(w, v, c) {
 
 console.log(knapsack4([3, 1, 2], [6, 4, 3], 5))
   
+
+// dp 空间优化 只一行数组
+function knapsack5(w, v, c) {
+  const n = w.length
+
+  const memo = new Array(c+1).fill(-1)
+
+  for(let i = 0; i <= c; i++) {
+    memo[i] = ( i >= w[0] ? v[0] : 0)
+  }
+  
+  for(let i = 1; i < n ; i++ ) {
+    for(let j = c; j >= w[i]; j--) {
+      memo[j] = Math.max(memo[j], v[i] + memo[j - w[i]])
+    }
+  }
+
+  return memo[c]
+}
+
+console.log(knapsack5([3, 1, 2], [6, 4, 3], 5))
