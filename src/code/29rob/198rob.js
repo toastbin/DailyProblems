@@ -22,7 +22,62 @@
  * @param {number[]} nums
  * @return {number}
  */
-var rob = function(nums) {
+// 暴力递归
+var rob1 = function(nums) {
+  
+  return process(nums, 0)
+
+  // 考虑 nums[index, ...tail] 这个范围的所有房子
+  function process(nums, i) {
+    if(i >= nums.length) return 0
+
+    let cur = process(nums, i+2) + nums[i]
+    let prev = process(nums, i+1)
+
+    return Math.max(cur, prev)
+  }
+};
+// 4
+console.log(rob1([1, 2, 3, 1])) 
+
+// 备忘录
+var rob2 = function(nums) {
+  const memo = new Array(nums.length).fill(null)
+
+  return process(nums, 0)
+
+  function process(nums, i) {
+    if(i >= nums.length) return 0
+    if(memo[i] !== null) return memo[i] 
+    let cur = process(nums, i+2) + nums[i]
+    let prev = process(nums, i+1)
+
+    return memo[i] = Math.max(cur, prev)
+  }
+};
+// 4
+console.log(rob2([1, 2, 3, 1])) 
+
+// dp
+var rob3 = function(nums) {
+  const len = nums.length;
+  if(len == 0)
+      return 0;
+  const dp = new Array(len).fill(-1)
+  dp[len-1] = nums[len-1]
+
+  for(let i = len-2; i >=0; i--) {
+    for(let j = i; j < len; j++) {
+      dp[i] = Math.max(dp[i], nums[j] + (j + 2 < len ? dp[j+2] : 0))
+    }
+  }
+
+  return dp[0];
+};
+console.log(rob3([1, 2, 3, 1])) 
+
+// dp
+var rob4 = function(nums) {
   const len = nums.length;
   if(len == 0)
       return 0;
@@ -34,4 +89,4 @@ var rob = function(nums) {
   }
   return dp[len];
 };
-console.log(rob([1, 2, 3, 1])) 
+console.log(rob4([1, 2, 3, 1])) 
