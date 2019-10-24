@@ -38,6 +38,4 @@ var rob = function(nums) {
   }
 };
 
-console.log(rob([1,3,1,3,100]));
-
 module.exports = rob
