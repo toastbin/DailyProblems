@@ -57,12 +57,6 @@ var uniquePathsWithObstacles1 = function(obstacleGrid) {
   }
 };
 
-console.log(uniquePathsWithObstacles1([
-  [0,0,0],
-  [0,1,0],
-  [0,0,0]
-]))
-
 
 // dp 时间复杂度 O(N * M) 空间复杂度 O(N * M)
 var uniquePathsWithObstacles2 = function(obstacleGrid) {
@@ -106,9 +100,7 @@ var uniquePathsWithObstacles2 = function(obstacleGrid) {
   return dp[0][0]
 };
 
-console.log(uniquePathsWithObstacles2([
-  [0,0,0],
-  [0,1,0],
-  [0,0,0]
-]))
-
+module.exports = {
+  uniquePathsWithObstacles1,
+  uniquePathsWithObstacles2
+}

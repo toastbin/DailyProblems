@@ -1,0 +1,14 @@
+{
+  "name": "DailyProblems",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/toastbin/DailyProblems.git",
+  "author": "toast <729440390@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}

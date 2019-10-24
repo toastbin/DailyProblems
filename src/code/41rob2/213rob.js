@@ -21,7 +21,7 @@
  * @return {number}
  */
 // 备忘录
-var rob1 = function(nums) {
+var rob = function(nums) {
   if(nums.length === 1) return nums[0]
   const memo1 = new Array(nums.length).fill(-1)
   const memo2 = new Array(nums.length).fill(-1)
@@ -38,29 +38,6 @@ var rob1 = function(nums) {
   }
 };
 
-console.log(rob1([1,3,1,3,100]));
+console.log(rob([1,3,1,3,100]));
 
-// dp
-// var rob2 = function(nums) {
-//   if(nums.length === 1) return nums[0]
-//   if(nums.length === 0) return 0
-  
-//   return Math.max(process(nums.slice(1, nums.length+1)), process(nums.reverse().slice(1, nums.length+1)))
-
-//   function process(nums) {
-//     const len = nums.length
-//     const dp = new Array(len).fill(-1)
-    
-//     dp[len-1] = nums[len-1]
-
-//     for(let i = len-2; i >= 0; i--) {
-//       for(let j = i; j < len - 1; j++) {
-//         dp[i] = Math.max(dp[i], nums[j] + (j + 2 < len ? dp[j+2] : 0))
-//       }
-//     }
-//     console.log(dp);
-//     return dp[0]
-//   }
-// };
-
-// console.log(rob2([1,3,1,3,100]));
+module.exports = rob
