@@ -27,6 +27,7 @@ var generateParenthesis = function(n) {
     if(l > n || r > n || r > l) return
     if(l === n && r === n ) {
       res.push(str)
+      return
     }
     process(res, str + '(', l + 1, r, n)
     process(res, str + ')', l, r + 1, n)
