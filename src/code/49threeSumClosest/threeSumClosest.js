@@ -48,11 +48,6 @@ var threeSumClosest2 = function (nums, target) {
       if (Math.abs(cur) < offset) {
         offset = Math.abs(cur)
         result = target - cur
-        if (cur > 0) {
-          l++
-        } else {
-          r--
-        }
       } else {
         if (cur > 0) {
           l++
@@ -62,6 +57,7 @@ var threeSumClosest2 = function (nums, target) {
       }
     }
   }
+
   return result
 };
 
