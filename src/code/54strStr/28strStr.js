@@ -28,7 +28,7 @@
 var strStr = function (haystack, needle) {
   if (haystack === '' && needle === '') return 0
   if (needle === '') return 0
-  if (!haystack || !needle || haystack.length < needle.length) {
+  if (!haystack || haystack.length < needle.length) {
     return -1
   }
   let i1 = i2 = 0
