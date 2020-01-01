@@ -39,7 +39,6 @@ var searchInsert1 = function (nums, target) {
 var searchInsert2 = function (nums, target) {
   let start = 0, end = nums.length - 1
   while (start <= end) {
-    //二分法省时间，找出中间的指针
     let mid = (start + end) >> 1
     if (target == nums[mid]) {
       return mid
