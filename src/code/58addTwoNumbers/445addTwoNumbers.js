@@ -40,8 +40,8 @@ var addTwoNumbers = function (l1, l2) {
 	while (l1ReverseHead || l2ReverseHead || tempNum) {
 		const l1Val = l1ReverseHead ? l1ReverseHead.val : 0
 		const l2Val = l2ReverseHead ? l2ReverseHead.val : 0
-		const addNum = (((l1Val + l2Val) % 10) + 1) % 10
-		tempNum = addNum >= 10 ? 1 : 0
+		const addNum = (((l1Val + l2Val) % 10) + tempNum) % 10
+		tempNum = l1Val + l2Val + tempNum >= 10 ? 1 : 0
 		res.next = new ListNode(addNum)
 		res = res.next
 		l1ReverseHead = l1ReverseHead ? l1ReverseHead.next : null
