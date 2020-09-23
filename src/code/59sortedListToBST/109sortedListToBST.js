@@ -35,8 +35,20 @@
  * @param {ListNode} head
  * @return {TreeNode}
  */
+// [-10, -3, 0, 5, 9]
+// [0, -3, 9, -10, null, 5]
+// 0 => -10 -3
+//      => -10
+//      => -3
+//
+//   => 5 9
+//      => 5
+//      => 9
+
 var sortedListToBST = function(head) {
+    // 递归终点1
     if (!head) return null
+    // 递归终点2
     if (!head.next) return new TreeNode(head.val)
     let pre = head
     let slow = head.next
@@ -46,6 +58,7 @@ var sortedListToBST = function(head) {
         slow = slow.next
         fast = fast.next.next
     }
+    // 断掉中间节点
     pre.next = null
     const root = new TreeNode(slow.val)
     root.left = sortedListToBST(head)
