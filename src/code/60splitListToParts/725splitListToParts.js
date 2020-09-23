@@ -58,9 +58,9 @@ var splitListToParts = function (root, k) {
         start = start.next
     }
     const isHasNull = count / k < 1 ? true : false
+    let head = root
     // 分割不够的情况
     if (isHasNull) {
-        let head = root
         for (let i = 1; i < k; i++) {
             if (head) {
                 res.push(head)
@@ -76,7 +76,6 @@ var splitListToParts = function (root, k) {
     if (!isHasNull) {
         const isHasRemainder = count % k
         const step = Math.floor(count / k)
-        let head = root
         let leftNum = isHasRemainder
         for (let i = 0; i < k; i++) {
             res.push(head)
